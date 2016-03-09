@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="panel panel-info col-sm-9" >
+            <div class="panel-title">
+                <h3>Chercher une Personne</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" ng-model="findPersonQuery" ng-change="addRegistration.findNow(findPersonQuery)">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1em" ng-show="addRegistration.findParents.length">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="parent in addRegistration.findParents">
+                                <td>{{parent.firstName}}</td>
+                                <td>{{parent.lastName}}</td>
+                                <td>{{parent.email}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.selectParent(parent)">
+                                        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" style="margin-top: 2em">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary" type="button" ng-click="addRegistration.cancelFindParent()">Annuler</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

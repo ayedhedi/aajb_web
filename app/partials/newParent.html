@@ -1,0 +1,157 @@
+<div class="panel panel-danger"  >
+    <div class="panel-body">
+        <form name="newParentForm" novalidate>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-2">
+                    <label for="firstName" style="margin-top: 0.5em">Prénom:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="text"  placeholder="Prénom ..."
+                           ng-model="addRegistration.tmpParent.firstName" id="firstName" name="firstName" required
+                           ng-class="{invalidInput: newParentForm.firstName.$invalid}"  />
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <label for="p1LastName"  style="margin-top: 0.5em">Nom:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="text"  placeholder="Nom ..."  id="p1LastName" name="lastName"
+                           ng-model="addRegistration.tmpParent.lastName" required
+                           ng-class="{invalidInput: newParentForm.lastName.$invalid}">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <label class="col-sm-2" style="margin-top: 0.5em">Sexe:</label>
+                <div class="btn-group col-sm-4 ">
+                    <label class="btn btn-info" ng-model="addRegistration.tmpParent.gender" uib-btn-radio="'MALE'" >Masculin</label>
+                    <label class="btn btn-info" ng-model="addRegistration.tmpParent.gender" uib-btn-radio="'FEMALE'">Féminin</label>
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <label for="p1Email" style="margin-top: 0.5em">eMail:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control" name="email"  type="email"  emailcheck  id="p1Email"
+                           ng-model="addRegistration.tmpParent.email" required
+                           ng-class="{invalidInput: newParentForm.email.$invalid || newParentForm.email.$error.emailcheck}">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-2">
+                    <label for="p1TelGsm" style="margin-top: 0.5em">Tél. GSM:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="p1TelGsm"
+                           ng-model="addRegistration.tmpParent.telGsm">
+                </div>
+                <div class="col-sm-2 ">
+                    <label for="p1TelPro" style="margin-top: 0.5em">Tél. Pro:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="p1TelPro"
+                           ng-model="addRegistration.tmpParent.telPro">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label for="p1ssn" style="margin-top: 0.5em">Numéro de sécurité sociale:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-username form-control"  type="number"  placeholder="1 11 11 111 111 11 "  id="p1ssn"
+                           ng-model="addRegistration.tmpParent.ssn">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label for="p1caf" style="margin-top: 0.5em">Numéro de la CAF:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-username form-control"  type="number"  placeholder="1111"  id="p1caf"
+                           ng-model="addRegistration.tmpParent.caf">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label style="margin-top: 0.5em">Proféssion:</label>
+                </div>
+                <div class="col-sm-7">
+                    <div id="divJobs">
+                        <input id="inputProf" class="typeahead form-control" type="text" placeholder="Proféssion"  ng-model="addRegistration.tmpParent.job">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-3">
+                    <label for="adr" style="margin-top: 0.5em">Adresse:</label>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-username form-control" type="text" id="adr"
+                           ng-model="addRegistration.tmpParent.address" googleplace>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-2">
+                    <button ng-disabled="newParentForm.$invalid" class="btn btn-warning" type="submit" ng-click="addRegistration.okNewParent()">Ajouter</button>
+                </div>
+                <div class="col-sm-2 col-sm-offset-1">
+                    <button class="btn btn-primary" type="button" ng-click="addRegistration.cancelNewParent()">Annuler</button>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1em">
+                <div class="col-sm-12">
+                    <label class="errorMessage" ng-show="newParentForm.email.$error.emailcheck">L'adresse e-mail existe déjà</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+            var matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            var substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+                if (substrRegex.test(str)) {
+                    matches.push(str);
+                }
+            });
+
+            cb(matches);
+        };
+    };
+
+    var jobsList;
+    var jobsListName = [];
+
+    $.ajax({
+        type: "GET",
+        url: "assets/data/jobs.csv",
+        dataType: "text",
+        success: function(data) {
+             jobsList = $.csv.toObjects(data);
+            jobsList.map(function (job) {
+                jobsListName.push(job.job);
+            })
+        }
+    });
+
+
+    $('#divJobs .typeahead').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'jobsListName',
+                source: substringMatcher(jobsListName)
+            }
+    );
+
+</script>
