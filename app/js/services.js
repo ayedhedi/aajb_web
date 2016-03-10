@@ -14,6 +14,7 @@ angular.module('aajbApp')
                     .success(function(data) {
                         if (data.status == "true") {
                             $rootScope.authenticatedUser = true;
+                            $rootScope.isAdmin = data.isAdmin;
                             callback(true,0);
                         }else {
                             if (data.errors.indexOf("10101") == 0) {
@@ -101,6 +102,30 @@ angular.module('aajbApp')
                 });
 
         };
+
+        service.readParents = function (callback) {
+            $http({
+                url: '/apiaajb/api/secure/parent',
+                method: "GET",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+            })
+                .then(function(response) {
+                    callback(response.data);
+                });
+        };
+
+        service.readParentsPage = function (page, size, callback) {
+            $http({
+                url: '/apiaajb/api/secure/parent/paged?page='+page+"&size="+size,
+                method: "GET",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+            })
+                .then(function(response) {
+                    callback(response.data);
+                });
+        };
+
+
 
         return service;
     })

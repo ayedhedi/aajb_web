@@ -1,5 +1,5 @@
 <div class="row slide-tile" ng-class="{'slide-up': !addRegistration.showMain}" ng-show="addRegistration.showMain">
-    <div class="panel panel-info col-sm-7" >
+    <div class="panel panel-info col-sm-10" >
         <div class="panel-title">
             <h3>Ajout d'une nouvelle inscription</h3>
         </div>
@@ -80,6 +80,70 @@
                        </tbody>
                    </table>
                </div>
+               <div class="row" style="margin-top: 1em">
+                   <div class="col-sm-3">
+                       <label>Paiements: </label>
+                   </div>
+                   <div class="col-sm-2">
+                       Chèques <span class="badge">{{addRegistration.registration.cheques.length}}</span>
+                   </div>
+                   <div class="col-sm-1">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.showChequePanel=!addRegistration.showChequePanel">
+                           <span ng-class="{'glyphicon glyphicon-triangle-bottom': addRegistration.showChequePanel,
+                           'glyphicon glyphicon-triangle-right': !addRegistration.showChequePanel}" aria-hidden="true"></span>
+                       </button>
+                   </div>
+               </div>
+               <div style="margin-top: 1em"  ng-class="{'slide-up': !addRegistration.showChequePanel}" ng-show="addRegistration.showChequePanel">
+                   <div class="row" >
+                       <div class="col-sm-2">
+                           <input class="form-username form-control"  type="number"  placeholder="Montant ..."
+                                  ng-model="addRegistration.tmpCheque.amount" required ng-class="{invalidInput: addRegistration.tmpCheque.amount.$invalid}">
+                       </div>
+                       <div class="col-sm-3">
+                           <input class="form-username form-control"  type="text"  placeholder="Banque ..."
+                                  ng-model="addRegistration.tmpCheque.bankName" >
+                       </div>
+                       <div class="col-sm-3">
+                           <input class="form-username form-control"  type="text"  placeholder="Numéro ..."
+                                  ng-model="addRegistration.tmpCheque.number" >
+                       </div>
+                       <div class="col-sm-2">
+                           <input class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
+                       </div>
+                       <div class="col-sm-2">
+                           <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.addCheque()">
+                               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                           </button>
+                       </div>
+                   </div>
+                   <div class="row" style="margin-top: 1em">
+                       <table class="table">
+                           <thead>
+                           <tr  class="info">
+                               <th>Montant</th>
+                               <th>Banque</th>
+                               <th>Numéro</th>
+                               <th>Date Enc.</th>
+                               <th></th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr ng-repeat="cheque in addRegistration.registration.cheques" class="active">
+                               <td>{{cheque.amount}}</td>
+                               <td>{{cheque.bankName}}</td>
+                               <td>{{cheque.number}}</td>
+                               <td>{{cheque.adjustableDate | date : 'dd/MM/yyyy' }}</td>
+                               <td>
+                                   <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.removeCheque(cheque)">
+                                       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                   </button>
+                               </td>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
            </form>
         </div>
     </div>
@@ -94,5 +158,3 @@
 <div class="row" ui-view>
 
 </div>
-
-<pre style="margin-top: 50px">{{ addRegistration.registration | json }}</pre>

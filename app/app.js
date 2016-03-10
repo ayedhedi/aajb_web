@@ -10,71 +10,70 @@ angular.module('aajbApp').config(function ($stateProvider, $urlRouterProvider, $
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-        .state('login', {
+        .state('main', {
+            url: '/main',
+            template: '<div ui-view></div>',
+            controller: 'MainCtr',
+            controllerAs: 'mainCtr'
+        })
+        .state('main.login', {
             url: '/login',
             templateUrl: 'app/partials/login.html',
             controller: 'LoginCtr',
             controllerAs: 'loginCtr'
         })
-        .state('home', {
-            url: '/home',
+        .state('main.home', {
+            url: '/main/home',
             templateUrl: 'app/partials/home.html',
             controller: 'HomeCtr',
             controllerAs: 'homeCtr'
         })
-        .state('home.addRegistration', {
+        .state('main.home.addRegistration', {
             url: '/addRegistration',
             templateUrl: 'app/partials/addRegistration.html',
             controller: 'AddRegistration',
             controllerAs: 'addRegistration'
         })
-        .state('home.addRegistration.newParent', {
+        .state('main.home.addRegistration.newParent', {
             url: '/newParent',
             templateUrl: 'app/partials/newParent.html'
         })
-        .state('home.addRegistration.newStudent', {
+        .state('main.home.addRegistration.newStudent', {
             url: '/newStudent',
             templateUrl: 'app/partials/newStudent.html'
         })
-        .state('home.addRegistration.findParent', {
+        .state('main.home.addRegistration.findParent', {
             url: '/findParent',
             templateUrl: 'app/partials/findParent.html'
         })
+        .state('main.home.parentList', {
+            url: '/parentList',
+            templateUrl: 'app/partials/parents.html',
+            controller: 'ParentList',
+            controllerAs: 'parentList'
+        })
+        .state('main.home.parentList.parentDetails', {
+            url: '/parentDetails',
+            templateUrl: 'app/partials/parentDetails.html'
+        })
+
     ;
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 });
 
 angular.module('aajbApp').run(function($rootScope,$state) {
+    moment.locale('fr');
+
+    $rootScope.isAuthenticated = false;
+    $state.go('main.login');
+
     $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
-        if ( toState.name !== 'login' && $rootScope.authenticatedUser==false) {
-            $state.go('login');
+        if ( toState.name !== 'main.login' && $rootScope.isAuthenticated==false) {
+            $state.go('main.login');
         }
     });
 });
-
-angular.module('aajbApp').controller('MainCtr', function ($scope, $state, Auth) {
-
-    moment.locale('fr');
-
-    this.isConnected = function () {
-        return angular.isDefined($scope.authenticatedUser);
-    };
-
-    this.logout = function () {
-        Auth.Logout(function (status) {
-            if (status == true) {
-                $state.go('login');
-            }else {
-                alert("Erreur de déconnection !!");
-                $state.go('login');
-            }
-        });
-    };
-});
-
-
-
 
 
 var mess_errConn = "Connexion impossible au serveur. Veuillez réessayer plus tard. " +

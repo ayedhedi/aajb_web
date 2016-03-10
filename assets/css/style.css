@@ -259,3 +259,7 @@ img { max-width: 100%; }
 .tt-suggestion p {
     margin: 0;
 }
+
+.datepicker.dropdown-menu {
+    color: #ffffff;
+}

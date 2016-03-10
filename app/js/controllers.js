@@ -5,15 +5,40 @@
 
 angular.module('aajbApp')
 
-    .controller('LoginCtr', function ($scope, $state, Auth) {
+    .controller('MainCtr', function ($scope, $rootScope, $state, Auth) {
+        if ($rootScope.isAuthenticated) {
+            $state.go("main.home");
+        }else {
+            $state.go("main.login");
+        }
+
+        this.logout = function () {
+            $rootScope.isAuthenticated = false;
+            $state.go("main.login");
+
+            //TODO: explicit remote call for logout
+            /*Auth.Logout(function (status) {
+                if (status == true) {
+                    $state.go('login');
+                }else {
+                    alert("Erreur de déconnection !!");
+                    $state.go('login');
+                }
+            });*/
+        };
+    })
+
+    .controller('LoginCtr', function ($rootScope, $scope, $state, Auth) {
         var _this = this;
         _this.dateNow = new Date();
         _this.error = null;
 
         _this.login = function () {
+            $rootScope.isAuthenticated = false;
             Auth.Login($scope.login, $scope.password, function(status, code) {
                 if (status) {
-                    $state.go('home');
+                    $rootScope.isAuthenticated = true;
+                    $state.go('main.home');
                 }else {
                     var mess = "";
                     if (code == -1) {
@@ -33,8 +58,15 @@ angular.module('aajbApp')
         }
     })
 
-    .controller('HomeCtr', function(){
+    .controller('HomeCtr', function($state){
 
+        this.loadParentList = function () {
+            $state.go("main.home.parentList");
+        };
+
+        this.loadAddReg = function () {
+            $state.go("main.home.addRegistration");
+        }
     })
 
     .controller('AddRegistration', function ($state,$timeout,$window,$q, Api) {
@@ -44,6 +76,7 @@ angular.module('aajbApp')
         //indicates id the edit mode is activated or not.
         var editStudentMode = false;
 
+        $('.datepicker').datepicker();
 
         //the json global object
         _this.registration = {
@@ -51,7 +84,8 @@ angular.module('aajbApp')
                 gender: 'MALE'
             },
             secondParent: {},
-            students: []
+            students: [],
+            cheques: []
         };
         //a temp variable to store new parent creation
         _this.tmpParent = {
@@ -59,11 +93,15 @@ angular.module('aajbApp')
         };
         //a temp variable to store new student creation
         _this.tmpStudent = {};
+        //this will hold the temp cheque object
+        _this.tmpCheque = {};
 
         //show/hide the main panel
         _this.showMain = true;
         //show/hide address panel
         _this.shoAdrPanel = false;
+        //show / hide cheque panel
+        _this.showChequePanel = false;
         //this will control the birth date validation
         _this.isBirthDateValid = false;
         //this will contains result of find query
@@ -89,7 +127,7 @@ angular.module('aajbApp')
             }
 
             _this.showMain = true;
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
             if (parentNum == 1) {
                 _this.registration.firstParent = _this.tmpParent;
             }else {
@@ -102,7 +140,7 @@ angular.module('aajbApp')
         _this.cancelNewParent = function () {
             _this.tmpParent = {};
             _this.showMain = true;
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
         };
 
         //click to add new student
@@ -129,14 +167,14 @@ angular.module('aajbApp')
             _this.tmpStudent = {};
             _this.showMain = true;
             editStudentMode = false;
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
         };
 
         _this.cancelNewStudent = function () {
             _this.tmpStudent = {};
             _this.showMain = true;
             editStudentMode = false;
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
         };
 
         //will be called when delete a student
@@ -190,7 +228,7 @@ angular.module('aajbApp')
                 console.log(result);
                 if (result.status == "true") {
                     $window.alert("L'inscription a bien été enregistrée sur le numéro: "+result.registration.id);
-                    $state.go('home');
+                    $state.go('main.home');
                 }else {
                     var mess = "Une erreur est survenue lors de l'enregistrement de l'inscription  ! ";
                     if (result.errors!=null && results.errors.length>0) {
@@ -203,7 +241,7 @@ angular.module('aajbApp')
 
         //will cancel the registration
         _this.cancelRegistration = function () {
-            $state.go("home");
+            $state.go("main.home");
         };
 
         //loads the find parent view
@@ -225,7 +263,7 @@ angular.module('aajbApp')
             }
             _this.findParents = [];
             _this.showMain = true;
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
         };
 
         //call the web service to find parents
@@ -242,11 +280,106 @@ angular.module('aajbApp')
         _this.cancelFindParent = function () {
             _this.showMain = true;
             _this.findParents = [];
-            $state.go("home.addRegistration");
+            $state.go("main.home.addRegistration");
         };
 
+        _this.removeCheque = function (cheque) {
+            _this.registration.cheques.splice(_this.registration.cheques.indexOf(cheque), 1);
+        };
+
+        _this.addCheque = function () {
+            _this.tmpCheque.adjustableDate = Date.parse(_this.tmpCheque.adjustableDate);
+
+            if (angular.isDefined(_this.tmpCheque.amount) &&
+                    parseInt(_this.tmpCheque.amount) >= 1 &&
+                        angular.isDefined(_this.tmpCheque.adjustableDate)) {
+
+                _this.registration.cheques.push(_this.tmpCheque);
+                _this.tmpCheque = {};
+            }
+        };
     })
 
+    .controller('ParentList', function ($scope, $state,$timeout,Api) {
+        var _this = this;
+        var desc = false;
+        var size = 30;
+
+        var orderBy = "id";
+
+        _this.showMain=true;
+        _this.parents = [];
+        _this.order = '+id';
+        _this.numberOfPage = 0;
+        _this.currentPage = 0;
+        _this.isAdmin = $scope.isAdmin;
+        _this.selectedParent = undefined;
+
+        //load first page first time
+        Api.readParentsPage(_this.currentPage, size, function (data) {
+            _this.parents = data.parents;
+            _this.numberOfPage = data.numberOfPages;
+        });
+
+        //changes the order
+        _this.changeOrder = function (ord) {
+            if (ord==orderBy) {
+                desc = !desc;
+            } else {
+                desc = false;
+                orderBy = ord;
+            }
+            if (desc){
+                _this.order = '-' + orderBy;
+            }else {
+                _this.order = '+' + orderBy;
+            }
+        };
+
+        _this.changePageFirst = function () {
+            _this.currentPage = 0;
+            Api.readParentsPage(_this.currentPage, size, function (data) {
+                _this.parents = data.parents;
+            });
+        };
+        _this.changePagePrevious = function () {
+            if (_this.currentPage > 0) {
+                _this.currentPage --;
+                Api.readParentsPage(_this.currentPage, size, function (data) {
+                    _this.parents = data.parents;
+                });
+            }
+        };
+        _this.changePageNext = function () {
+            if (_this.currentPage < _this.numberOfPage-1) {
+                _this.currentPage ++;
+                Api.readParentsPage(_this.currentPage, size, function (data) {
+                    _this.parents = data.parents;
+                });
+            }
+        };
+        _this.changePageLast = function () {
+            _this.currentPage=_this.numberOfPage-1;
+            Api.readParentsPage(_this.currentPage, size, function (data) {
+                _this.parents = data.parents;
+            });
+        };
+
+        _this.loadParentDetails = function (parent) {
+            _this.showMain = false;
+            _this.selectedParent = parent;
+            //wait for the animation
+            $timeout(function () {
+                $state.go(".parentDetails");
+            },500);
+        };
+
+        _this.cancelParentDetails = function () {
+            _this.showMain = true;
+            _this.selectedParent = undefined;
+            $state.go("main.home.parentList");
+        };
+    })
 
 
 ;

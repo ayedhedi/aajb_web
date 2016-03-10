@@ -1,0 +1,87 @@
+<div class="panel panel-danger"  >
+    <div class="panel-body">
+        <form name="viewParentForm" novalidate>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-2">
+                    <label for="firstName" style="margin-top: 0.5em">Prénom:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="text"  disabled
+                           ng-model="parentList.selectedParent.firstName" id="firstName" name="firstName"  />
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <label for="p1LastName"  style="margin-top: 0.5em">Nom:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  type="text"  disabled id="p1LastName" name="lastName"
+                           ng-model="parentList.selectedParent.lastName" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <label class="col-sm-2" style="margin-top: 0.5em">Sexe:</label>
+                <div class="btn-group col-sm-4 ">
+                    <span class="badge btn-info"> {{parentList.selectedParent.gender}} </span>
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <label for="p1Email" style="margin-top: 0.5em">eMail:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control" name="email"  id="p1Email"
+                           ng-model="parentList.selectedParent.email" disabled>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-2">
+                    <label for="p1TelGsm" style="margin-top: 0.5em">Tél. GSM:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  disabled  id="p1TelGsm"
+                           ng-model="parentList.selectedParent.telGsm">
+                </div>
+                <div class="col-sm-2 ">
+                    <label for="p1TelPro" style="margin-top: 0.5em">Tél. Pro:</label>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-username form-control"  disabled  id="p1TelPro"
+                           ng-model="parentList.selectedParent.telPro">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label for="p1ssn" style="margin-top: 0.5em">Numéro de sécurité sociale:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-username form-control" disabled  id="p1ssn"
+                           ng-model="parentList.selectedParent.ssn">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label for="p1caf" style="margin-top: 0.5em">Numéro de la CAF:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-username form-control"  disabled id="p1caf"
+                           ng-model="parentList.selectedParent.caf">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-5">
+                    <label style="margin-top: 0.5em">Proféssion:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-username form-control"  disabled id="inputProf" ng-model="parentList.selectedParent.job">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2em">
+                <div class="col-sm-3">
+                    <label for="adr" style="margin-top: 0.5em">Adresse:</label>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-username form-control" type="text" id="adr"
+                           ng-model="parentList.selectedParent.address" disabled>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<button class="btn btn-primary" type="button" ng-click="parentList.cancelParentDetails()">Retour</button>

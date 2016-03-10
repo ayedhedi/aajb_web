@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="app/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.standalone.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
-
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,49 +35,19 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+
+    <!--[if lt IE 10]>
+    <script src="assets/js/placeholder.js"></script>
+    <![endif]-->
+
+
+
 </head>
-<body  ng-app="aajbApp" ng-controller="MainCtr as mainCtr">
+<body  ng-app="aajbApp">
+    <div ui-view>
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-inverse">
-    <div class="container">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#portfolio">Catalog</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#about">About</a>
-                </li>
-                <li class="page-scroll"  ng-if="mainCtr.isConnected()">
-                     <button type="button" ng-click="mainCtr.logout()" class="btn btn-danger navbar-btn">Déconnexion</button>
-                </li>
-            </ul>
-        </div>
     </div>
-    <!-- /.container-fluid -->
-</nav>
-
-<!-- Top content -->
-<div class="top-content">
-    <div class="inner-bg">
-        <div class="container" ui-view>
-
-        </div>
-    </div>
-</div>
-
-<!-- Javascript -->
-
-
-<!--[if lt IE 10]>
-<script src="assets/js/placeholder.js"></script>
-<![endif]-->
-
+</body>
 
 <script src="assets/js/jquery-1.11.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -95,6 +65,7 @@
 <script src="app/node_modules/bootstrap/js/modal.js"></script>
 <script src="assets/js/angular-locale_fr-fr.js"></script>
 <script src="assets/js/jquery.csv.min.js"></script>
+<script src="assets/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="app/node_modules/angular-bootstrap-datetimepicker/moment/moment.js"></script>
 <script type="text/javascript" src="app/node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
 <script type="text/javascript" src="app/node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
@@ -103,6 +74,4 @@
 <script src="app/js/controllers.js"></script>
 <script src="app/js/directives.js"></script>
 
-
-</body>
 </html>
