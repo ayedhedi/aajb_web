@@ -9,7 +9,8 @@
                     <div class="col-sm-6">
                         <div class="input-group">
                             <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
-                            <input ng-model="filterWith" type="text" class="form-control" placeholder="Chercher" aria-describedby="basic-addon1">
+                            <input ng-model="parentList.search" ng-change="parentList.reloadParentList()" type="text"
+                                   class="form-control" placeholder="Chercher" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -39,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="parent in parentList.parents |filter:filterWith | orderBy:parentList.order" class="active">
+                            <tr ng-repeat="parent in parentList.parents | orderBy:parentList.order" class="active">
                                 <td>{{parent.id}}</td>
                                 <td>{{parent.firstName}}</td>
                                 <td>{{parent.lastName}}</td>

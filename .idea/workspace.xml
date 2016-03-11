@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ccdebb7-534d-4ce6-bb2e-b1c954ae5d87" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/parentDetails.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/parents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/addRegistration.html" afterPath="$PROJECT_DIR$/app/partials/addRegistration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/home.html" afterPath="$PROJECT_DIR$/app/partials/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/login.html" afterPath="$PROJECT_DIR$/app/partials/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/parents.html" afterPath="$PROJECT_DIR$/app/partials/parents.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services.js" afterPath="$PROJECT_DIR$/app/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/style.css" afterPath="$PROJECT_DIR$/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AAJB-Web.iws" />
@@ -49,29 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4231" max-vertical-offset="5320">
-              <caret line="285" column="48" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="48" />
-              <folding>
-                <element signature="e#2365#2529#0" expanded="false" />
-                <element signature="e#3295#3597#0" expanded="false" />
-                <element signature="e#3679#4147#0" expanded="false" />
-                <element signature="e#4237#4369#0" expanded="false" />
-                <element signature="e#4450#4822#0" expanded="false" />
-                <element signature="e#4993#5076#0" expanded="false" />
-                <element signature="e#10109#12624#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2760">
-              <caret line="16" column="38" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1891" max-vertical-offset="2860">
+              <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,18 +66,18 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.827586" vertical-offset="720" max-vertical-offset="1580">
+            <state vertical-scroll-proportion="-19.310345" vertical-offset="300" max-vertical-offset="1580">
               <caret line="43" column="70" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="75" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addRegistration.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addRegistration.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/addRegistration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68561065" vertical-offset="2133" max-vertical-offset="3320">
-              <caret line="135" column="75" selection-start-line="135" selection-start-column="75" selection-end-line="135" selection-end-column="75" />
+            <state vertical-scroll-proportion="-15.689655" vertical-offset="1525" max-vertical-offset="3320">
+              <caret line="99" column="110" selection-start-line="99" selection-start-column="110" selection-end-line="99" selection-end-column="110" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -112,7 +86,37 @@
                 <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1457624188068" expanded="true" signature="5241:5412" placeholder="{...}" />
+                <marker date="1457624611533" expanded="true" signature="5241:5412" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parents.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/partials/parents.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.586207" vertical-offset="0" max-vertical-offset="1560">
+              <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3095512" vertical-offset="4831" max-vertical-offset="6940">
+              <caret line="303" column="25" selection-start-line="303" selection-start-column="25" selection-end-line="303" selection-end-column="25" />
+              <folding>
+                <element signature="e#2365#2529#0" expanded="false" />
+                <element signature="e#3295#3597#0" expanded="false" />
+                <element signature="e#3679#4147#0" expanded="false" />
+                <element signature="e#4237#4369#0" expanded="false" />
+                <element signature="e#4450#4822#0" expanded="false" />
+                <element signature="e#4993#5076#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -144,14 +148,14 @@
         <option value="$PROJECT_DIR$/app/partials/main.html" />
         <option value="$PROJECT_DIR$/app/partials/login.html" />
         <option value="$PROJECT_DIR$/app/partials/home.html" />
-        <option value="$PROJECT_DIR$/app/js/services.js" />
         <option value="$PROJECT_DIR$/app/app.js" />
-        <option value="$PROJECT_DIR$/app/partials/parents.html" />
         <option value="$PROJECT_DIR$/app/partials/parentDetails.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/app/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/partials/addRegistration.html" />
+        <option value="$PROJECT_DIR$/app/js/services.js" />
+        <option value="$PROJECT_DIR$/app/partials/parents.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -410,7 +414,7 @@
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22974473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.87236404" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -465,7 +469,7 @@
             <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1457624188068" expanded="true" signature="5241:5412" placeholder="{...}" />
+            <marker date="1457624611533" expanded="true" signature="5241:5412" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -547,7 +551,6 @@
             <element signature="e#4237#4369#0" expanded="false" />
             <element signature="e#4450#4822#0" expanded="false" />
             <element signature="e#4993#5076#0" expanded="false" />
-            <element signature="e#10109#12624#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,7 +587,7 @@
             <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1457624188068" expanded="true" signature="5241:5412" placeholder="{...}" />
+            <marker date="1457624611533" expanded="true" signature="5241:5412" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -666,7 +669,6 @@
             <element signature="e#4237#4369#0" expanded="false" />
             <element signature="e#4450#4822#0" expanded="false" />
             <element signature="e#4993#5076#0" expanded="false" />
-            <element signature="e#10109#12624#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -703,7 +705,7 @@
             <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1457624188068" expanded="true" signature="5241:5412" placeholder="{...}" />
+            <marker date="1457624611533" expanded="true" signature="5241:5412" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -785,7 +787,6 @@
             <element signature="e#4237#4369#0" expanded="false" />
             <element signature="e#4450#4822#0" expanded="false" />
             <element signature="e#4993#5076#0" expanded="false" />
-            <element signature="e#10109#12624#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -928,25 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/partials/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.827586" vertical-offset="720" max-vertical-offset="1580">
-          <caret line="43" column="70" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/partials/parents.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.862069" vertical-offset="480" max-vertical-offset="1540">
-          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="147" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/data/jobs.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36823934" vertical-offset="0" max-vertical-offset="14760">
@@ -988,14 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2760">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/newStudent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3809524" vertical-offset="600" max-vertical-offset="1500">
@@ -1030,26 +1004,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/app/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4231" max-vertical-offset="5320">
-          <caret line="285" column="48" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="48" />
-          <folding>
-            <element signature="e#2365#2529#0" expanded="false" />
-            <element signature="e#3295#3597#0" expanded="false" />
-            <element signature="e#3679#4147#0" expanded="false" />
-            <element signature="e#4237#4369#0" expanded="false" />
-            <element signature="e#4450#4822#0" expanded="false" />
-            <element signature="e#4993#5076#0" expanded="false" />
-            <element signature="e#10109#12624#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1891" max-vertical-offset="2860">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/addRegistration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68561065" vertical-offset="2133" max-vertical-offset="3320">
-          <caret line="135" column="75" selection-start-line="135" selection-start-column="75" selection-end-line="135" selection-end-column="75" />
+        <state vertical-scroll-proportion="-15.689655" vertical-offset="1525" max-vertical-offset="3320">
+          <caret line="99" column="110" selection-start-line="99" selection-start-column="110" selection-end-line="99" selection-end-column="110" />
           <folding>
             <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -1058,7 +1024,41 @@
             <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1457624188068" expanded="true" signature="5241:5412" placeholder="{...}" />
+            <marker date="1457624611533" expanded="true" signature="5241:5412" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.310345" vertical-offset="300" max-vertical-offset="1580">
+          <caret line="43" column="70" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/parents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.586207" vertical-offset="0" max-vertical-offset="1560">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3095512" vertical-offset="4831" max-vertical-offset="6940">
+          <caret line="303" column="25" selection-start-line="303" selection-start-column="25" selection-end-line="303" selection-end-column="25" />
+          <folding>
+            <element signature="e#2365#2529#0" expanded="false" />
+            <element signature="e#3295#3597#0" expanded="false" />
+            <element signature="e#3679#4147#0" expanded="false" />
+            <element signature="e#4237#4369#0" expanded="false" />
+            <element signature="e#4450#4822#0" expanded="false" />
+            <element signature="e#4993#5076#0" expanded="false" />
           </folding>
         </state>
       </provider>

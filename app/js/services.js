@@ -49,7 +49,7 @@ angular.module('aajbApp')
         var service = {};
 
         service.CheckEmail = function (email, callback) {
-                    $http.get('/apiaajb/api/findByEmail/?email='+email)
+                    $http.get('/apiaajb/api/secure/parent/findByEmail/?email='+email)
                         .success(function(data) {
                             if (data.status == "true") {
                                 callback(true);
@@ -114,9 +114,14 @@ angular.module('aajbApp')
                 });
         };
 
-        service.readParentsPage = function (page, size, callback) {
+        service.readParentsPage = function (search, page, size, callback) {
+            var url  = "/apiaajb/api/secure/parent/paged?&page="+page+"&size="+size;
+            if (search != undefined) {
+                url += "&search="+search;
+            }
+
             $http({
-                url: '/apiaajb/api/secure/parent/paged?page='+page+"&size="+size,
+                url: url,
                 method: "GET",
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
