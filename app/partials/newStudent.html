@@ -32,10 +32,8 @@
                         </div>
                         <div class="col-sm-4">
                             <select name="singleSelect" ng-model="addRegistration.tmpStudent.className">
-                                <option value="GA" selected>GA</option>
-                                <option value="GB">GB</option>
-                                <option value="MA">MA</option>
-                                <option value="MB">MB</option>
+                                <option ng-repeat="cl in addRegistration.classesNames.all"  ng-selected="addRegistration.classesNames.all.indexOf(cl)==0"
+                                        value="{{cl}}">{{cl}} -- {{addRegistration.classesNames[cl]}}</option>
                             </select>
                         </div>
                     </div>

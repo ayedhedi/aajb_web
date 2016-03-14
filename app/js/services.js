@@ -141,6 +141,19 @@ angular.module('aajbApp')
                 });
         };
 
+        service.readClassesSize = function (callback) {
+            $http(
+                {
+                    url: '/apiaajb/api/secure/student/classNames',
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                }
+            ).
+                then(function (response) {
+                    callback(response.data);
+                })
+        };
+
 
 
         return service;

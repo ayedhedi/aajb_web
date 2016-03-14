@@ -1,5 +1,5 @@
 <div class="row slide-tile" ng-class="{'slide-up': !addRegistration.showMain}" ng-show="addRegistration.showMain">
-    <div class="panel panel-info col-sm-10" >
+    <div class="panel panel-info col-sm-12" >
         <div class="panel-title">
             <h3>Ajout d'une nouvelle inscription</h3>
         </div>
@@ -84,8 +84,11 @@
                    <div class="col-sm-3">
                        <label>Paiements: </label>
                    </div>
-                   <div class="col-sm-2">
+                   <div class="col-sm-3">
                        Chèques <span class="badge">{{addRegistration.registration.cheques.length}}</span>
+                   </div>
+                   <div class="col-sm-3">
+                       <span ng-if="addRegistration.registration.cheques.length > 0" class="badge info"> &euro; {{addRegistration.totalAmountCheque}} </span>
                    </div>
                    <div class="col-sm-1">
                        <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.showChequePanel=!addRegistration.showChequePanel">
@@ -97,10 +100,13 @@
                <div style="margin-top: 1em"  ng-class="{'slide-up': !addRegistration.showChequePanel}" ng-show="addRegistration.showChequePanel">
                    <div class="row" >
                        <div class="col-sm-2">
+                           <label><input type="checkbox" ng-model="addRegistration.tmpCheque.adjustable">Encaissable </label>
+                       </div>
+                       <div class="col-sm-2">
                            <input class="form-username form-control"  type="number"  placeholder="Montant ..."
                                   ng-model="addRegistration.tmpCheque.amount" required ng-class="{invalidInput: addRegistration.tmpCheque.amount.$invalid}">
                        </div>
-                       <div class="col-sm-3">
+                       <div class="col-sm-2">
                            <input class="form-username form-control"  type="text"  placeholder="Banque ..."
                                   ng-model="addRegistration.tmpCheque.bankName" >
                        </div>
@@ -109,12 +115,7 @@
                                   ng-model="addRegistration.tmpCheque.number" >
                        </div>
                        <div class="col-sm-2">
-                           <input ng-disabled="addRegistration.tmpCheque.adjustable" class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
-                       </div>
-                       <div class="col-sm-1">
-                           <div class="checkbox">
-                               <label><input type="checkbox" ng-model="addRegistration.tmpCheque.adjustable">Encaissable </label>
-                           </div>
+                           <input ng-disabled="!addRegistration.tmpCheque.adjustable" class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
                        </div>
                        <div class="col-sm-1">
                            <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.addCheque()">
@@ -129,7 +130,7 @@
                                <th>Montant</th>
                                <th>Banque</th>
                                <th>Numéro</th>
-                               <th>Date Enc.</th>
+                               <th>Date d'encaissement</th>
                                <th></th>
                            </tr>
                            </thead>
@@ -138,7 +139,8 @@
                                <td>{{cheque.amount}}</td>
                                <td>{{cheque.bankName}}</td>
                                <td>{{cheque.number}}</td>
-                               <td>{{cheque.adjustableDate | date : 'dd/MM/yyyy' }}</td>
+                               <td ng-if="!cheque.adjustable">Non Encaissable</td>
+                               <td ng-if="cheque.adjustable">{{cheque.adjustableDate | date : 'dd/MM/yyyy' }}</td>
                                <td>
                                    <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.removeCheque(cheque)">
                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>

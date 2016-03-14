@@ -95,8 +95,9 @@ angular.module('aajbApp')
         _this.tmpStudent = {};
         //this will hold the temp cheque object
         _this.tmpCheque = {
-            adjutable: true
+            adjustable: true
         };
+        _this.totalAmountCheque = 0;
 
         //show/hide the main panel
         _this.showMain = true;
@@ -108,6 +109,7 @@ angular.module('aajbApp')
         _this.isBirthDateValid = false;
         //this will contains result of find query
         _this.findParents = [];
+        _this.classesNames = {};
 
         //click on "create new parent" button
         _this.loadNewParent = function (num) {
@@ -152,6 +154,11 @@ angular.module('aajbApp')
                 _this.tmpStudent.gender = "MALE";
                 _this.isBirthDateValid = false;
             }
+
+            //reload the classes name & size
+            Api.readClassesSize(function (data) {
+                _this.classesNames = data;
+            });
 
             _this.showMain = false;
             //wait for the animation
@@ -272,7 +279,6 @@ angular.module('aajbApp')
         _this.findNow = function (query) {
             if (query!=null && query.length>2) {
                 Api.findParents (query, function (resuls) {
-                    console.log(resuls);
                     _this.findParents = resuls.data;
                 })
             }
@@ -287,18 +293,35 @@ angular.module('aajbApp')
 
         _this.removeCheque = function (cheque) {
             _this.registration.cheques.splice(_this.registration.cheques.indexOf(cheque), 1);
+            _this.totalAmountCheque -=  parseInt(cheque.amount);
         };
 
         _this.addCheque = function () {
-            _this.tmpCheque.adjustableDate = Date.parse(_this.tmpCheque.adjustableDate);
-
-            if (angular.isDefined(_this.tmpCheque.amount) &&
+            if (_this.tmpCheque.adjustable) {
+                if (angular.isDefined(_this.tmpCheque.amount) &&
                     parseInt(_this.tmpCheque.amount) >= 1 &&
-                        angular.isDefined(_this.tmpCheque.adjustableDate)) {
+                    angular.isDefined(_this.tmpCheque.adjustableDate)) {
 
-                _this.registration.cheques.push(_this.tmpCheque);
-                _this.tmpCheque = {};
+                    _this.totalAmountCheque +=  parseInt(_this.tmpCheque.amount);
+                    _this.tmpCheque.adjustableDate = Date.parse(_this.tmpCheque.adjustableDate);
+                    _this.registration.cheques.push(_this.tmpCheque);
+                    _this.tmpCheque = {
+                        adjustable: true
+                    };
+                }
+            }else {
+                if (angular.isDefined(_this.tmpCheque.amount) &&
+                    parseInt(_this.tmpCheque.amount) >= 1 ) {
+
+                    _this.totalAmountCheque +=  parseInt(_this.tmpCheque.amount);
+                    _this.tmpCheque.adjustableDate = undefined;
+                    _this.registration.cheques.push(_this.tmpCheque);
+                    _this.tmpCheque = {
+                        adjustable: true
+                    };
+                }
             }
+
         };
     })
 
