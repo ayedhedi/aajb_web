@@ -130,6 +130,17 @@ angular.module('aajbApp')
                 });
         };
 
+        service.readRegistrationOfParent = function (id, callback) {
+            $http({
+                url: '/apiaajb/api/secure/registration/findByParentId?id='+id,
+                method: "GET",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+            })
+                .then(function(response) {
+                    callback(response.data.registrations);
+                });
+        };
+
 
 
         return service;

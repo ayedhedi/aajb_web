@@ -6,7 +6,7 @@
         <div class="panel-body">
             <form>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         <div class="input-group">
                             <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
                             <input ng-model="parentList.search" ng-change="parentList.reloadParentList()" type="text"
@@ -19,7 +19,7 @@
                             <span ng-click="parentList.changePagePrevious()" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <label>Page  {{parentList.currentPage + 1 }} | {{parentList.numberOfPage}}</label>
                     </div>
                     <div class="col-sm-2">
@@ -35,7 +35,7 @@
                                 <th ng-click="parentList.changeOrder('firstName')">Prénom</th>
                                 <th ng-click="parentList.changeOrder('lastName')">Nom</th>
                                 <th ng-click="parentList.changeOrder('email')">Email</th>
-                                <th ng-click="parentList.changeOrder('registrations.length')">Inscriptions</th>
+                                <th>Proféssion</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -45,9 +45,7 @@
                                 <td>{{parent.firstName}}</td>
                                 <td>{{parent.lastName}}</td>
                                 <td>{{parent.email}}</td>
-                                <td>
-                                    <span class="badge btn-info" style="min-width: 45px; min-height: 20px"> {{parent.registrations.length}} </span>
-                                </td>
+                                <td>{{parent.job}}</td>
                                 <td>
                                     <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" ng-click="parentList.loadParentDetails(parent)">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>

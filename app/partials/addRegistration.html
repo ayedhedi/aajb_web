@@ -109,9 +109,14 @@
                                   ng-model="addRegistration.tmpCheque.number" >
                        </div>
                        <div class="col-sm-2">
-                           <input class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
+                           <input ng-disabled="addRegistration.tmpCheque.adjustable" class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
                        </div>
-                       <div class="col-sm-2">
+                       <div class="col-sm-1">
+                           <div class="checkbox">
+                               <label><input type="checkbox" ng-model="addRegistration.tmpCheque.adjustable">Encaissable </label>
+                           </div>
+                       </div>
+                       <div class="col-sm-1">
                            <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.addCheque()">
                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                            </button>

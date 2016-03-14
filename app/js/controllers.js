@@ -94,7 +94,9 @@ angular.module('aajbApp')
         //a temp variable to store new student creation
         _this.tmpStudent = {};
         //this will hold the temp cheque object
-        _this.tmpCheque = {};
+        _this.tmpCheque = {
+            adjutable: true
+        };
 
         //show/hide the main panel
         _this.showMain = true;
@@ -315,6 +317,7 @@ angular.module('aajbApp')
         _this.currentPage = 0;
         _this.isAdmin = $scope.isAdmin;
         _this.selectedParent = undefined;
+        _this.selectedParentRegistrations = [];
 
         _this.sendRequest = function () {
             Api.readParentsPage(_this.search, _this.currentPage, size, function (data) {
@@ -374,11 +377,31 @@ angular.module('aajbApp')
             $timeout(function () {
                 $state.go(".parentDetails");
             },500);
+            //read registration of this parent
+            Api.readRegistrationOfParent(parent.id, function (registrations) {
+                if (angular.isDefined(registrations)) {
+                    _this.selectedParentRegistrations = registrations;
+                    console.log(_this.selectedParentRegistrations);
+                }
+            });
+
+        };
+
+        _this.adjusted = function (registration) {
+            var i = 0;
+            registration.cheques.map(function (cheque) {
+                if (cheque.adjust)
+                {
+                    i++;
+                }
+            });
+            return i;
         };
 
         _this.cancelParentDetails = function () {
             _this.showMain = true;
             _this.selectedParent = undefined;
+            _this.selectedParentRegistrations = [];
             $state.go("main.home.parentList");
         };
     })

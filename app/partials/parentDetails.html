@@ -81,6 +81,34 @@
                            ng-model="parentList.selectedParent.address" disabled>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Inscriptions <span class="badge">{{parentList.selectedParentRegistrations.length}}</span></label>
+                </div>
+            </div>
+            <div class="row" ng-show="parentList.selectedParentRegistrations.length > 0">
+                <table class="table">
+                    <thead>
+                        <tr  class="info">
+                            <th>Num</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                            <th>Chèques</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="registration in parentList.selectedParentRegistrations" class="active">
+                            <td>{{registration.id}}</td>
+                            <td>{{registration.date | date :'dd/MM/yyyy'}}</td>
+                            <td>{{registration.state}}</td>
+                            <td>
+                                <label class="label label-primary">Non encaissés {{registration.cheques.length}}</label>
+                                <label class="label label-info">Encaissés {{parentList.adjusted(registration)}}</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </form>
     </div>
 </div>
