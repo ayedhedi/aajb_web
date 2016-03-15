@@ -1,4 +1,4 @@
-<div class="row slide-tile" ng-class="{'slide-up': !addRegistration.showMain}" ng-show="addRegistration.showMain">
+<div class="row slide-tile" ng-class="{'slide-up': !addRegistration.showPanel()}" ng-show="addRegistration.showPanel()">
     <div class="panel panel-info col-sm-12" >
         <div class="panel-title">
             <h3>Ajout d'une nouvelle inscription</h3>
@@ -14,12 +14,12 @@
                               value="{{addRegistration.registration.firstParent.firstName}} {{addRegistration.registration.firstParent.lastName}}">
                    </div>
                    <div class="col-sm-1">
-                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadNewParent(1)">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadStateNewParent(1)">
                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                        </button>
                    </div>
                    <div class="col-sm-1 ">
-                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.findParent(1)">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadStateFindParent(1)">
                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                        </button>
                    </div>
@@ -33,12 +33,12 @@
                               value="{{addRegistration.registration.secondParent.firstName}} {{addRegistration.registration.secondParent.lastName}}">
                    </div>
                    <div class="col-sm-1">
-                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadNewParent(2)">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadStateNewParent(2)">
                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                        </button>
                    </div>
                    <div class="col-sm-1">
-                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.findParent(2)">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadStateFindParent(2)">
                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                        </button>
                    </div>
@@ -48,7 +48,7 @@
                        <label>Enfants: </label>
                    </div>
                    <div class="col-sm-1">
-                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadNewStudent()">
+                       <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.loadStateNewStudent()">
                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                        </button>
                    </div>
@@ -97,28 +97,28 @@
                        </button>
                    </div>
                </div>
-               <div style="margin-top: 1em"  ng-class="{'slide-up': !addRegistration.showChequePanel}" ng-show="addRegistration.showChequePanel">
+               <div style="margin-top: 1em"  ng-class="{'slide-up': !addRegistration.showChequePanel}" ng-show="addRegistration.showChequePanel" ng-controller="Cheque as cheque">
                    <div class="row" >
                        <div class="col-sm-2">
-                           <label><input type="checkbox" ng-model="addRegistration.tmpCheque.adjustable">Encaissable </label>
+                           <label><input type="checkbox" ng-model="cheque.tmpCheque.adjustable">Encaissable </label>
                        </div>
                        <div class="col-sm-2">
                            <input class="form-username form-control"  type="number"  placeholder="Montant ..."
-                                  ng-model="addRegistration.tmpCheque.amount" required ng-class="{invalidInput: addRegistration.tmpCheque.amount.$invalid}">
+                                  ng-model="cheque.tmpCheque.amount" required ng-class="{invalidInput: cheque.tmpCheque.amount.$invalid}">
                        </div>
                        <div class="col-sm-2">
                            <input class="form-username form-control"  type="text"  placeholder="Banque ..."
-                                  ng-model="addRegistration.tmpCheque.bankName" >
+                                  ng-model="cheque.tmpCheque.bankName" >
                        </div>
                        <div class="col-sm-3">
                            <input class="form-username form-control"  type="text"  placeholder="Numéro ..."
-                                  ng-model="addRegistration.tmpCheque.number" >
+                                  ng-model="cheque.tmpCheque.number" >
                        </div>
                        <div class="col-sm-2">
-                           <input ng-disabled="!addRegistration.tmpCheque.adjustable" class="datepicker" ng-model="addRegistration.tmpCheque.adjustableDate" style="width: 100px">
+                           <input ng-disabled="!cheque.tmpCheque.adjustable" class="datepicker" ng-model="cheque.tmpCheque.adjustableDate" style="width: 100px">
                        </div>
                        <div class="col-sm-1">
-                           <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.addCheque()">
+                           <button type="button" class="btn btn-default btn-sm" ng-click="cheque.addCheque()">
                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                            </button>
                        </div>
@@ -142,7 +142,7 @@
                                <td ng-if="!cheque.adjustable">Non Encaissable</td>
                                <td ng-if="cheque.adjustable">{{cheque.adjustableDate | date : 'dd/MM/yyyy' }}</td>
                                <td>
-                                   <button type="button" class="btn btn-default btn-sm" ng-click="addRegistration.removeCheque(cheque)">
+                                   <button type="button" class="btn btn-default btn-sm" ng-click="cheque.removeCheque(cheque)">
                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                    </button>
                                </td>
@@ -155,9 +155,9 @@
         </div>
     </div>
 
-    <div class="col-sm-12">
-        <button class="btn btn-info" type="button" ng-click="addRegistration.okRegistration()">Confirmer</button>
-        <button class="btn btn-primary" type="button" ng-click="addRegistration.cancelRegistration()">Annuler</button>
+    <div class="col-sm-12" ng-controller="AddRegistrationCtr as ctr">
+        <button class="btn btn-info" type="button" ng-click="ctr.save()">Confirmer</button>
+        <button class="btn btn-primary" type="button" ng-click="ctr.cancel()">Annuler</button>
     </div>
 </div>
 

@@ -7,65 +7,64 @@
                 </div>
                 <div class="col-sm-4">
                     <input class="form-username form-control"  type="text"  placeholder="Prénom ..."
-                           ng-model="addRegistration.tmpParent.firstName" id="firstName" name="firstName" required
+                           ng-model="newParent.tmpParent.firstName" id="firstName" name="firstName" required
                            ng-class="{invalidInput: newParentForm.firstName.$invalid}"  />
                 </div>
                 <div class="col-sm-1 col-sm-offset-1">
-                    <label for="p1LastName"  style="margin-top: 0.5em">Nom:</label>
+                    <label for="lastName"  style="margin-top: 0.5em">Nom:</label>
                 </div>
                 <div class="col-sm-4">
-                    <input class="form-username form-control"  type="text"  placeholder="Nom ..."  id="p1LastName" name="lastName"
-                           ng-model="addRegistration.tmpParent.lastName" required
-                           ng-class="{invalidInput: newParentForm.lastName.$invalid}">
+                    <input class="form-username form-control"  type="text"  placeholder="Nom ..."  id="lastName" name="lastName"
+                           ng-model="newParent.tmpParent.lastName" requiredl ng-class="{invalidInput: newParentForm.lastName.$invalid}">
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
                 <label class="col-sm-2" style="margin-top: 0.5em">Sexe:</label>
                 <div class="btn-group col-sm-4 ">
-                    <label class="btn btn-info" ng-model="addRegistration.tmpParent.gender" uib-btn-radio="'MALE'" >Masculin</label>
-                    <label class="btn btn-info" ng-model="addRegistration.tmpParent.gender" uib-btn-radio="'FEMALE'">Féminin</label>
+                    <label class="btn btn-info" ng-model="newParent.tmpParent.gender" uib-btn-radio="'MALE'" >Masculin</label>
+                    <label class="btn btn-info" ng-model="newParent.tmpParent.gender" uib-btn-radio="'FEMALE'">Féminin</label>
                 </div>
                 <div class="col-sm-1 col-sm-offset-1">
-                    <label for="p1Email" style="margin-top: 0.5em">eMail:</label>
+                    <label for="email" style="margin-top: 0.5em">eMail:</label>
                 </div>
                 <div class="col-sm-4">
-                    <input class="form-username form-control" name="email"  type="email"  emailcheck  id="p1Email"
-                           ng-model="addRegistration.tmpParent.email" required
+                    <input class="form-username form-control" name="email"  type="email"  emailcheck  id="email"
+                           ng-model="newParent.tmpParent.email" required
                            ng-class="{invalidInput: newParentForm.email.$invalid || newParentForm.email.$error.emailcheck}">
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
                 <div class="col-sm-2">
-                    <label for="p1TelGsm" style="margin-top: 0.5em">Tél. GSM:</label>
+                    <label for="telGsm" style="margin-top: 0.5em">Tél. GSM:</label>
                 </div>
                 <div class="col-sm-4">
-                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="p1TelGsm"
-                           ng-model="addRegistration.tmpParent.telGsm">
+                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="telGsm"
+                           ng-model="newParent.tmpParent.telGsm">
                 </div>
                 <div class="col-sm-2 ">
-                    <label for="p1TelPro" style="margin-top: 0.5em">Tél. Pro:</label>
+                    <label for="telPro" style="margin-top: 0.5em">Tél. Pro:</label>
                 </div>
                 <div class="col-sm-4">
-                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="p1TelPro"
-                           ng-model="addRegistration.tmpParent.telPro">
+                    <input class="form-username form-control"  type="number"  placeholder="06 XX XX XX XX "  id="telPro"
+                           ng-model="newParent.tmpParent.telPro">
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
                 <div class="col-sm-5">
-                    <label for="p1ssn" style="margin-top: 0.5em">Numéro de sécurité sociale:</label>
+                    <label for="ssn" style="margin-top: 0.5em">Numéro de sécurité sociale:</label>
                 </div>
                 <div class="col-sm-7">
-                    <input class="form-username form-control"  type="number"  placeholder="1 11 11 111 111 11 "  id="p1ssn"
-                           ng-model="addRegistration.tmpParent.ssn">
+                    <input class="form-username form-control"  type="number"  placeholder="1 11 11 111 111 11 "  id="ssn"
+                           ng-model="newParent.tmpParent.ssn">
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
                 <div class="col-sm-5">
-                    <label for="p1caf" style="margin-top: 0.5em">Numéro de la CAF:</label>
+                    <label for="caf" style="margin-top: 0.5em">Numéro de la CAF:</label>
                 </div>
                 <div class="col-sm-7">
-                    <input class="form-username form-control"  type="number"  placeholder="1111"  id="p1caf"
-                           ng-model="addRegistration.tmpParent.caf">
+                    <input class="form-username form-control"  type="number"  placeholder="1111"  id="caf"
+                           ng-model="newParent.tmpParent.caf">
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
@@ -74,7 +73,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div id="divJobs">
-                        <input id="inputProf" class="typeahead form-control" type="text" placeholder="Proféssion"  ng-model="addRegistration.tmpParent.job">
+                        <input id="inputProf" class="typeahead form-control" type="text" placeholder="Proféssion"  ng-model="newParent.tmpParent.job">
                     </div>
                 </div>
             </div>
@@ -84,15 +83,15 @@
                 </div>
                 <div class="col-sm-9">
                     <input class="form-username form-control" type="text" id="adr"
-                           ng-model="addRegistration.tmpParent.address" googleplace>
+                           ng-model="newParent.tmpParent.address" googleplace>
                 </div>
             </div>
             <div class="row" style="margin-top: 2em">
                 <div class="col-sm-2">
-                    <button ng-disabled="newParentForm.$invalid" class="btn btn-warning" type="submit" ng-click="addRegistration.okNewParent()">Ajouter</button>
+                    <button ng-disabled="newParentForm.$invalid" class="btn btn-warning" type="submit" ng-click="newParent.okNewParent()">Ajouter</button>
                 </div>
                 <div class="col-sm-2 col-sm-offset-1">
-                    <button class="btn btn-primary" type="button" ng-click="addRegistration.cancelNewParent()">Annuler</button>
+                    <button class="btn btn-primary" type="button" ng-click="newParent.cancelNewParent()">Annuler</button>
                 </div>
             </div>
             <div class="row" style="margin-top: 1em">
@@ -104,6 +103,7 @@
     </div>
 </div>
 
+<!-- TODO: not yet clean !!! -->
 <script type="text/javascript">
     var substringMatcher = function(strs) {
         return function findMatches(q, cb) {
