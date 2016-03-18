@@ -9,7 +9,7 @@
                         </div>
                         <div class="col-sm-4">
                             <input class="form-username form-control"  type="text"  placeholder="Prénom ..."  id="firstName"
-                                   ng-model="addRegistration.tmpStudent.firstName" name="firstName" required
+                                   ng-model="newStudent.tmpStudent.firstName" name="firstName" required
                                    ng-class="{invalidInput: newStudentForm.firstName.$invalid}">
                         </div>
                         <div class="col-sm-1 col-sm-offset-1">
@@ -17,25 +17,23 @@
                         </div>
                         <div class="col-sm-4">
                             <input class="form-username form-control"  type="text"  placeholder="Nom ..."  id="lastName"
-                                   ng-model="addRegistration.tmpStudent.lastName" name="lastName" required
+                                   ng-model="newStudent.tmpStudent.lastName" name="lastName" required
                                    ng-class="{invalidInput: newStudentForm.lastName.$invalid}">
                         </div>
                     </div>
                     <div class="row" style="margin-top: 2em">
                         <label class="col-sm-2" style="margin-top: 0.5em">Sexe:</label>
                         <div class="btn-group col-sm-4 ">
-                            <label class="btn btn-info" ng-model="addRegistration.tmpStudent.gender" uib-btn-radio="'MALE'" >Masculin</label>
-                            <label class="btn btn-info" ng-model="addRegistration.tmpStudent.gender" uib-btn-radio="'FEMALE'">Féminin</label>
+                            <label class="btn btn-info" ng-model="newStudent.tmpStudent.gender" uib-btn-radio="'MALE'" >Masculin</label>
+                            <label class="btn btn-info" ng-model="newStudent.tmpStudent.gender" uib-btn-radio="'FEMALE'">Féminin</label>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1">
                             <label>Classe:</label>
                         </div>
                         <div class="col-sm-4">
-                            <select name="singleSelect" ng-model="addRegistration.tmpStudent.className">
-                                <option value="GA" selected>GA</option>
-                                <option value="GB">GB</option>
-                                <option value="MA">MA</option>
-                                <option value="MB">MB</option>
+                            <select name="singleSelect" ng-model="newStudent.tmpStudent.className">
+                                <option ng-repeat="cl in newStudent.classesNames.all"  ng-selected="newStudent.classesNames.all.indexOf(cl)==0"
+                                        value="{{cl}}">{{cl}} -- {{newStudent.classesNames[cl]}}</option>
                             </select>
                         </div>
                     </div>
@@ -44,21 +42,21 @@
                             <label style="margin-top: 0.5em">Date de naissance:</label>
                         </div>
                         <div class="col-sm-6">
-                            <label> {{addRegistration.tmpStudent.birthDate | date:'dd-MM-yyyy'}}</label>
+                            <label> {{newStudent.tmpStudent.birthDate | date:'dd-MM-yyyy'}}</label>
                         </div>
                     </div>
                     <div class="row">
-                        <datetimepicker data-ng-model="addRegistration.tmpStudent.birthDate"  data-on-set-time="addRegistration.onTimeSet(newDate, oldDate)"
+                        <datetimepicker data-ng-model="newStudent.tmpStudent.birthDate"  data-on-set-time="newStudent.onTimeSet(newDate, oldDate)"
                                         data-datetimepicker-config="{ startView:'year', minView:'day' }"></datetimepicker>
                     </div>
 
                     <div class="row" style="margin-top: 2em">
                         <div class="col-sm-2">
-                            <button ng-disabled="newStudentForm.$invalid || addRegistration.isBirthDateValid==false"
-                                    class="btn btn-warning" type="button" ng-click="addRegistration.okNewStudent()">Ajouter</button>
+                            <button ng-disabled="newStudentForm.$invalid || newStudent.isBirthDateValid==false"
+                                    class="btn btn-warning" type="button" ng-click="newStudent.okNewStudent()">Ajouter</button>
                         </div>
                         <div class="col-sm-2 col-sm-offset-1">
-                            <button class="btn btn-primary" type="button" ng-click="addRegistration.cancelNewStudent()">Annuler</button>
+                            <button class="btn btn-primary" type="button" ng-click="newStudent.cancelNewStudent()">Annuler</button>
                         </div>
                     </div>
                 </form>
@@ -66,5 +64,3 @@
         </div>
     </div>
 </div>
-
-<pre style="margin-top: 50px">{{addRegistration.tmpStudent.birthDate}}</pre>
