@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('aajbApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ui.bootstrap.datetimepicker'])
+angular.module('aajbApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ui.bootstrap.datetimepicker', 'angularSpinner'])
 
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/login');
@@ -66,15 +66,15 @@ angular.module('aajbApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ui.bootstr
     })
 
 
-    .run(function($rootScope, $state) {
+    .run(function($rootScope, $state, UserService) {
 
         $state.go('main.login');
 
-/*        $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
-            if ( toState.name !== 'main.login' && $rootScope.isAuthenticated==false) {
+        $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
+            if ( toState.name !== 'main.login' && !UserService.isConnected()) {
                 $state.go('main.login');
             }
-        });*/
+        });
     })
 
 ;

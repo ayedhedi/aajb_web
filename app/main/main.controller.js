@@ -4,24 +4,12 @@
 angular.module('aajbApp')
 
     .controller('MainCtr', function ($state, UserService) {
-        if ( UserService.isConnected() ) {
-            $state.go("main.home");
-        }else {
-            $state.go("main.login");
-        }
-
+        /**
+        *Calls the logout service and redirect to login page 
+        */
         this.logout = function () {
+            UserService.logout();
             $state.go("main.login");
-
-            //TODO: explicit remote call for logout
-            /*Auth.Logout(function (status) {
-             if (status == true) {
-             $state.go('login');
-             }else {
-             alert("Erreur de d�connection !!");
-             $state.go('login');
-             }
-             });*/
         };
     })
 

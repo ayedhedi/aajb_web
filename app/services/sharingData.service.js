@@ -3,6 +3,18 @@
  */
 angular.module('aajbApp')
 
+    .factory("userConnected", function(){
+        var user = undefined;
+        return {
+            getUser: function(){
+                return user;
+            },
+            setUser: function(_user){
+                user = _user;
+            }
+        }
+    })
+
     .factory("messagesProvider", function () {
         var loginIncorrect = "Nom d'utilisateur ou mot de passe invalide !!";
         var serverDown = "Impossible de se connecter au serveur !!";

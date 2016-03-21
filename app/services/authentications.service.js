@@ -5,14 +5,15 @@
 
 angular.module('aajbApp')
 
+
 /**
  * This service will deal with the RESTfull web service calls for login and logout features only.
  */
-    .service('UserService',function ($http, messagesProvider) {
+    .service('UserService',function ($http, messagesProvider, userConnected) {
         //this wil represent the connected user if any
-        var connectedUser = undefined;
         var service = {};
 
+        
         /**
          * Try to login user using its username and password.
          * If the server accepts the user credentials, the user will be saved in connectedUser object.
@@ -21,16 +22,13 @@ angular.module('aajbApp')
          * @return promise
          */
         service.login = function (username, password) {
-            //set connected user to null !!
-            connectedUser = undefined;
-
             //returns the promise now !!
             return $http.get('/apiaajb/api/login?login='+username+"&password="+password)
 
                 .then(
                     function (response) {
-                        //not problem user is successfully log-in
-                        connectedUser = response.data;
+                        //no problem user is successfully log-in
+                        userConnected.setUser(response.data);
                     },
                     function (httpError) {
                         //somthing wrong 4xx --> faillure log-in, 5xx serveur error
@@ -43,13 +41,25 @@ angular.module('aajbApp')
                     }
                 );
         };
+    
+        
+        /**
+        *   Disconnect the current user. 
+        */
+        service.logout = function(){
+            userConnected.setUser(undefined);
+            
+        }
+    
+    
 
         /**
-         * Checks if the one user is connected or not !!
+         * Checks if the user is connected or not !!
          * @returns {boolean|*} true: one user is connect, false otherwise
          */
         service.isConnected = function () {
-            return angular.isDefined(connectedUser);
+            console.log("user is connected ? : "+angular.isDefined(userConnected.getUser()));
+            return angular.isDefined(userConnected.getUser());
         };
 
 

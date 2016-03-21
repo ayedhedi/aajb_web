@@ -3,7 +3,7 @@
  */
 angular.module('aajbApp')
 
-    .controller('ParentList', function ($scope, $state,$timeout,Api) {
+    .controller('ParentList', function ($scope, $state, $timeout, Api, usSpinnerService) {
         var _this = this;
         var desc = false;
         var size = 10;
@@ -19,22 +19,52 @@ angular.module('aajbApp')
         _this.isAdmin = $scope.isAdmin;
         _this.selectedParent = undefined;
         _this.selectedParentRegistrations = [];
-
+        _this.isSpinActive = false;
+    
+    
+        /**
+        *   Send a request to the Api Service and get a promise 
+        */
         _this.sendRequest = function () {
-            Api.readParentsPage(_this.search, _this.currentPage, size, function (data) {
-                _this.parents = data.parents;
-                _this.numberOfPage = data.numberOfPages;
-            });
+            //set spinning on
+            usSpinnerService.spin('spinnerParentList');
+            _this.isSpinActive = true;
+            console.log("ok");
+            
+            //      Api web service call -------------------------------------------------------> API Call 
+            Api.readParentsPage(_this.search, _this.currentPage, size) 
+                .then(
+                    function(result){
+                        //update result 
+                        _this.parents = result.parents;
+                        _this.numberOfPage = result.numberOfPages;
+                        
+                        //set spinning off
+                        usSpinnerService.stop('spinnerParentList');
+                        _this.isSpinActive = false;
+                        
+                    },
+                    function(error){
+                        //set spinning off
+                        usSpinnerService.stop('spinnerParentList');
+                        _this.isSpinActive = false;
+                    }
+                )
         };
 
+        /**
+        * Re-load the parent list 
+        */
         _this.reloadParentList = function () {
             _this.sendRequest();
             _this.currentPage = 0;
         };
-
+    
+        
         //load first page first time
         _this.reloadParentList();
 
+    
         //changes the order
         _this.changeOrder = function (ord) {
             if (ord==orderBy) {
@@ -71,6 +101,10 @@ angular.module('aajbApp')
             _this.sendRequest();
         };
 
+    
+        /**
+        * View a prent detail ------------------------------------------------------------------------> API Call 
+        */
         _this.loadParentDetails = function (parent) {
             _this.showMain = false;
             _this.selectedParent = parent;
@@ -79,12 +113,17 @@ angular.module('aajbApp')
                 $state.go(".parentDetails");
             },500);
             //read registration of this parent
-            Api.readRegistrationOfParent(parent.id, function (registrations) {
-                if (angular.isDefined(registrations)) {
-                    _this.selectedParentRegistrations = registrations;
-                    console.log(_this.selectedParentRegistrations);
+            Api.readRegistrationOfParent(parent.id)
+                .then(
+                function(registrations) {
+                    if (angular.isDefined(registrations)) {
+                        _this.selectedParentRegistrations = registrations;
+                    }
+                },
+                function(error){
+                    
                 }
-            });
+            )
 
         };
 

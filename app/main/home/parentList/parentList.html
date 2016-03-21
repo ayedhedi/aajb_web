@@ -4,8 +4,10 @@
             <h3>Liste des parents</h3>
         </div>
         <div class="panel-body">
-            <form>
-                <div class="row">
+            <div ng-class="{active: !parentList.isSpinActive}">
+                <form>
+                
+                <div class="row">   
                     <div class="col-sm-5">
                         <div class="input-group">
                             <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
@@ -62,10 +64,12 @@
                     </table>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="row" ui-view>
+    <span us-spinner="{radius:30, width:3, length: 16}" spinner-key="spinnerParentList"></span>
 
+<div class="row" ui-view>
 </div>
